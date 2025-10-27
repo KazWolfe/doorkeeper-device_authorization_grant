@@ -106,7 +106,7 @@ module Doorkeeper
         test '#authorize with a verified device grant issues a new token with same device grant scopes' do
           request = DeviceCodeRequest.new(@server, @client, @verified_device_grant)
           request.authorize
-          assert_equal @verified_device_grant.scopes, Doorkeeper::AccessToken.last.scopes.to_s
+          assert_equal @verified_device_grant.scopes, Doorkeeper::AccessToken.last.scopes
         end
 
         test '#authorize with a verified device grant deletes the device grant' do

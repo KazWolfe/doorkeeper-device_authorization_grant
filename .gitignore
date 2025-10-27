@@ -11,3 +11,4 @@
 coverage/
 .yardoc/
 Gemfile.lock
+.idea/

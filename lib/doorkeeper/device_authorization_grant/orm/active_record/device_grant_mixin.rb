@@ -9,6 +9,9 @@ module Doorkeeper
     module DeviceGrantMixin
       extend ActiveSupport::Concern
       include ::Doorkeeper::Models::Expirable
+      include ::Doorkeeper::Models::Scopes
+
+      include Models::PolymorphicResourceOwner
 
       included do # rubocop:disable Metrics/BlockLength
         self.table_name = "#{table_name_prefix}oauth_device_grants#{table_name_suffix}"
