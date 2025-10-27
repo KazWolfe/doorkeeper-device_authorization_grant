@@ -14,6 +14,7 @@ module Doorkeeper
 
         validate :client, error: :invalid_client
         validate :client_supports_grant_flow, error: :unauthorized_client
+        validate :scopes, error: Doorkeeper::Errors::InvalidScope
 
         # @param server
         # @param client
@@ -65,6 +66,16 @@ module Doorkeeper
         def validate_client_supports_grant_flow
           client.present? && Doorkeeper.config.allow_grant_flow_for_client?(
             Doorkeeper::DeviceAuthorizationGrant::OAuth::DEVICE_CODE, client.application
+          )
+        end
+
+        # @return [Boolean]
+        def validate_scopes
+          Doorkeeper::OAuth::Helpers::ScopeChecker.valid?(
+            scope_str: scopes.to_s,
+            server_scopes: server.scopes,
+            app_scopes: client.scopes,
+            grant_type: Doorkeeper::DeviceAuthorizationGrant::OAuth::DEVICE_CODE
           )
         end
 
