@@ -15,8 +15,10 @@ module Doorkeeper
     autoload :OAuth, 'doorkeeper/device_authorization_grant/oauth'
     autoload :VERSION, 'doorkeeper/device_authorization_grant/version'
 
+    # Namespace for device authorization grant models (concerns)
     module Models
-      autoload :PolymorphicResourceOwner, 'doorkeeper/device_authorization_grant/models/concerns/polymorphic_resource_owner'
+      autoload :PolymorphicResourceOwner,
+        'doorkeeper/device_authorization_grant/models/concerns/polymorphic_resource_owner'
     end
 
     # Namespace for device authorization request strategies
