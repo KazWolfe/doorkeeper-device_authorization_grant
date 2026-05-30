@@ -13,7 +13,7 @@ gem 'rails', '~> 8.1.0'
 gem 'sprockets-rails', '~> 3.0'
 
 group :development, :test do
-  gem 'minitest', '~> 5.25.2'
+  gem 'minitest', '~> 6.0'
   # Interactive Debugging tools
   gem 'debug', '~> 1.8'
 end
